@@ -1,3 +1,4 @@
+const { log } = require('console')
 const fs = require ('fs')
 
 const arr = []
@@ -16,8 +17,8 @@ class Caja {
 
         try{
             await fs.promises.writeFile(this.ruta, JSON.stringify(this.cosas))
-        console.log(cosas)
-        console.log("guardado")
+             console.log(cosas)
+             console.log("guardado")
 
         } catch (err){
             console.log("error")
@@ -27,7 +28,27 @@ class Caja {
         return ultimoId
 
     }
-    
+    getById (idNumber){
+        console.log(this.cosas[idNumber]);
+    }
+    getAll (){
+        console.log(this.cosas);
+    }
+    deleteById (idNumber){
+        this.cosas.splice(idNumber,1);
+        console.log((`Obejto con id ${idNumber} elimindado`));
+    }
+    deleteAll(){
+        this.cosas  = [];
+
+    }
+
+
+
+
+
+
+
 }
 
 const caja =new Caja()
@@ -39,3 +60,29 @@ const cosa = [
 ]
 
 caja.guardar(cosa)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
